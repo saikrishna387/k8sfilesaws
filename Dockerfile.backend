@@ -3,7 +3,7 @@ FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 RUN apt-get update && apt-get install -y git
 # Clone backend repo (ensure repo public or provide credentials)
-RUN git clone https://github.com/imasheshk/K8sbes104.git .
+RUN git clone https://github.com/saikrishna387/K8sfes201.git .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Runtime with Tomcat (Tomcat default port 8080)
