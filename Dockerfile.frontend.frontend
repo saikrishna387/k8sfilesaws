@@ -1,0 +1,16 @@
+# Step 1: Build stage (Node.js + Vite)
+FROM node:18 AS build-stage
+WORKDIR /app
+RUN apt-get update && apt-get install -y git
+# Clone frontend repo
+RUN git clone https://github.com/imasheshk/K8sfes104.git .
+RUN npm install
+RUN npm run build
+
+# Step 2: Runtime - Tomcat
+FROM tomcat:9-jdk17
+RUN rm -rf /usr/local/tomcat/webapps/*
+# Copy build output into Tomcat webapps/ecommerce so URL is /ecommerce/
+COPY --from=build-stage /app/dist /usr/local/tomcat/webapps/ecommerce
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
