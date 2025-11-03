@@ -75,7 +75,7 @@ spec:
       containers:
         - name: backend
           # Use the correct backend image you built (or Docker Hub path)
-          image: imasheshk/k8sbes104aws:v1
+          image: saikrishna387/k8sbes201aws:v1
           ports:
             - containerPort: 8080
           env:
@@ -109,7 +109,7 @@ spec:
       containers:
         - name: frontend
           # Use the correct frontend image
-          image: imasheshk/k8sfes104aws:v1
+          image: saikrishna387/k8sfes201aws:v1
           ports:
             - containerPort: 8080
           env:
